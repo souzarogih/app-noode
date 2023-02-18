@@ -3,54 +3,54 @@
 ## Docker Hub
 [App-Noode](https://hub.docker.com/r/higorsouza/app-noode)
 
-## Build da aplicação
-### Build no docker
+### Build da aplicação
+#### Build no docker
 `docker build -t souzarogih/app-noode:1.0 .` 
 
-### Executar a imagem
+#### Executar a imagem
 `docker run -d -p 8081:3000 souzarogih/app-noode:1.0`
 
-### Logar no docker hub para fazer push
+#### Logar no docker hub para fazer push
 - `docker login -u [user_name]`
 - `Insira sua senha`
 
-### Fazer push de uma imagem para o docker
+#### Fazer push de uma imagem para o docker
 `docker push higorsouza/app-noode:1.3`
 
-### Criar uma cópia/tag de uma aplicação
+#### Criar uma cópia/tag de uma aplicação
 `docker tag souzarogih/app-noode:1.3 higorsouza/app-noode:1.3`
 
-## Compartilhamento de volumes
-### Compartilhar um volume entre host e container com volume | flag -v
+### Compartilhamento de volumes
+#### Compartilhar um volume entre host e container com volume | flag -v
 `docker run -it -v [volume_host]:[volume_container] ubuntu bash`
 ```bash
 $ docker run -it -v /home/higorsouza:/app ubuntu bash
 ```
 
-### Compartilhar um volume entre host e container com bind mount | flag --mount (Mais indicado)
+#### Compartilhar um volume entre host e container com bind mount | flag --mount (Mais indicado)
 `docker run -it --mount type=bind,source=[volume_host],target=[volume_container] ubuntu bash`
 ```bash
 $ docker run -it --mount type=bind,source=/home/higorsouza,target=/app ubuntu bash
 ```
 
-## Volumes
-### Listar os volumes
+### Volumes
+#### Listar os volumes
 `$ docker volume ls`
 
-### Criar volume
+#### Criar volume
 `$ docker volume create meu-volume`
 
-### Criar container e compartilhar com volume criado
+#### Criar container e compartilhar com volume criado
 `docker run -it -v [nome_volume]:[volume_container] ubuntu bash`
 ```bash
 $ docker run -it -v meu-volume:/app ubuntu bash
 ```
-### Criar container e compartilhar com volume criado 2
+#### Criar container e compartilhar com volume criado 2
 ```bash
 $ docker run -it --mount source=meu-novo-volume,target=/app ubuntu bash
 ```
 
-### Remover um volume 
+#### Remover um volume 
 ```bash
 $ docker volume rm fa98f9d4322f63019501b4efeef26c966f5212d5fb65945b6ca5188078763a12 -f
 ```
